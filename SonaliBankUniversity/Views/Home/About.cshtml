@@ -1,0 +1,30 @@
+﻿@model IEnumerable<SonaliBankUniversity.ViewModels.EnrollmentDateGroup>
+
+@{
+    ViewBag.Title = "Student Statistics";
+}
+
+<h2 class="text-capitalize text-center">Student Statistics</h2>
+
+<table class="table table-bordered text-center table-hover bg-success">
+    <tr class="">
+        <th class="text-center bg-primary">
+            Enrollment Date
+        </th>
+        <th class="text-center bg-primary">
+            Students
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.EnrollmentDate)
+            </td>
+            <td>
+                @item.StudentCount
+            </td>
+        </tr>
+    }
+</table>

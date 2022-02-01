@@ -1,0 +1,53 @@
+﻿@model IEnumerable<SonaliBankUniversity.Models.Department>
+
+@{
+    ViewBag.Title = "Department";
+}
+
+<h2 class="text-center">DEPARTMENTS</h2>
+
+<p>
+    @Html.ActionLink("Add New", "Create")
+</p>
+<table class="table table-bordered table-hover ">
+    <tr>
+
+        <th class="text-center bg-primary">
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th class="text-center bg-primary">
+            @Html.DisplayNameFor(model => model.Budget)
+        </th>
+        <th class="text-center bg-primary">
+            @Html.DisplayNameFor(model => model.StartDate)
+        </th>
+        <th class="text-center bg-primary">
+            Administrator
+        </th>
+        <th class="bg-primary"></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+
+    <td>
+        @Html.DisplayFor(modelItem => item.Name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Budget)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.StartDate)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Administrator.FullName)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.DepartmentID }) |
+        @Html.ActionLink("Details", "Details", new { id = item.DepartmentID }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.DepartmentID })
+    </td>
+</tr>
+}
+
+</table>

@@ -1,0 +1,60 @@
+﻿@model IEnumerable<SonaliBankUniversity.Models.Course>
+
+@{
+    ViewBag.Title = "Course";
+}
+
+<h2 class="text-center">COURSES</h2>
+
+<p class="bg-success visible-lg-inline-block">
+    @Html.ActionLink("Add Course", "Create")
+</p>
+
+@using (Html.BeginForm())
+{
+    <p>
+        Select Department: @Html.DropDownList("SelectedDepartment", "All")
+        <input type="submit" value="Filter" />
+    </p>
+}
+<table class="table table-bordered table-hover ">
+    <tr>
+        <th class="bg-success">
+            @Html.DisplayNameFor(model => model.CourseID)
+        </th>
+        <th class="bg-success">
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th class="bg-success">
+            @Html.DisplayNameFor(model => model.Credits)
+        </th>
+        <th class="bg-success">
+            Department
+        </th>
+        <th class="bg-success">CRUD Operation</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CourseID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Credits)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Department.Name)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.CourseID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.CourseID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.CourseID })
+            </td>
+        </tr>
+    }
+
+</table>

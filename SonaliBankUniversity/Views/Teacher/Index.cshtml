@@ -1,0 +1,55 @@
+﻿@model IEnumerable<SonaliBankUniversity.Models.Teacher>
+
+@{
+    ViewBag.Title = "Teacher";
+}
+
+<h2 class="text-center">Teachers</h2>
+
+<p class="bg-success visible-lg-inline-block">
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table table-hover table-bordered">
+    <tr>
+        <th class="text-center bg-success">
+            @Html.DisplayNameFor(model => model.ID)
+        </th>
+        <th class="text-center bg-success">
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th class="text-center bg-success">
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+
+        <th class="text-center bg-success">
+            @Html.DisplayNameFor(model => model.HireDate)
+        </th>
+
+        <th class="text-center bg-success"></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.ID)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.FirstName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.LastName)
+    </td>
+
+    <td>
+        @Html.DisplayFor(modelItem => item.HireDate)
+    </td>
+
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+        @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+    </td>
+</tr>
+}
+
+</table>
